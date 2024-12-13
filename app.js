@@ -1,3 +1,4 @@
+// FUNCTIONS
 function add(a, b) {
 	return a + b;
 }
@@ -14,10 +15,40 @@ function divide(a, b) {
 	return a / b;
 }
 
-const container = document.querySelector(".calculator-container");
-const numberButtons = document.querySelector(".number-seven");
-const result = document.querySelector(".result");
+function operate(first_number, second_number, operator) {
+	switch (operator) {
+		case "+":
+			return add(first_number, second_number);
+		case "-":
+			return subtract(first_number, second_number);
+		case "*":
+			return multiply(first_number, second_number);
+		case "/":
+			return divide(first_number, second_number);
+		default:
+			console.log("Invalid operator!");
+	}
+}
 
-numberButtons.addEventListener("click", function () {
-	result.innerText = "7";
-});
+// SELECTION
+const buttons = document.querySelectorAll(".number-button");
+const result = document.querySelector(".result");
+const container = document.querySelector(".calculator-container");
+
+// VARIABLES
+let first_number;
+let second_number;
+let operator;
+
+console.log(operate(1, 1, "+"));
+console.log(operate(3, 1, "-"));
+console.log(operate(2, 2, "*"));
+console.log(operate(4, 2, "/"));
+
+/*buttons.forEach((button) => {
+	button.addEventListener("click", (event) => {
+		let num = event.target.innerHTML;
+		result.appendChild(num);
+		container.appendChild(result);
+	});
+});*/
