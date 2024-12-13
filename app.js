@@ -30,11 +30,6 @@ function operate(first_number, second_number, operator) {
 	}
 }
 
-// SELECTION
-const buttons = document.querySelectorAll(".number-button");
-const result = document.querySelector(".result");
-const container = document.querySelector(".calculator-container");
-
 // VARIABLES
 let first_number;
 let second_number;
