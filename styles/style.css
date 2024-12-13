@@ -13,7 +13,8 @@ body {
 }
 
 .result,
-.number-button {
+.number-button,
+.number-seven {
 	font-family: "Zen Dots", sans-serif;
 	font-style: normal;
 }
@@ -62,7 +63,8 @@ body {
 	width: 33.33%;
 }
 
-.number-button {
+.number-button,
+.number-seven {
 	height: 100%;
 	width: 100%;
 	font-size: 40px;
@@ -70,7 +72,8 @@ body {
 	background-color: rgb(255, 255, 255);
 }
 
-.number-button:hover {
+.number-button:hover,
+.number-seven:hover {
 	background-color: gray;
 	cursor: pointer;
 }
