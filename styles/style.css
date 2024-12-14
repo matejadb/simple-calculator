@@ -26,14 +26,12 @@ body {
 }
 
 .container,
-.numbers,
-.operators {
+.numbers {
 	background-color: rgb(45, 44, 44);
 }
 
 .container,
-.number,
-.operator {
+.number {
 	font-size: 40px;
 	border-radius: 1.5em;
 	font-family: "Zen Dots", sans-serif;
@@ -64,8 +62,7 @@ body {
 	background-color: #ffffff;
 }
 
-.numbers,
-.operators {
+.numbers {
 	display: flex;
 	height: 100%;
 	padding: 0.3em;
@@ -81,14 +78,17 @@ body {
 .numbers {
 	flex-direction: row;
 	flex-wrap: wrap;
-	width: 75%;
+	width: 100%;
+}
+.numbers:nth-child(n) {
+	justify-content: end;
 }
 
 .number {
-	width: 33.33%;
+	width: 25%;
 }
 
-/* OPERATORS */
+/*OPERATORS 
 .operators {
 	flex-direction: column;
 	width: 25%;
@@ -96,4 +96,4 @@ body {
 
 .operator {
 	height: 33.33%;
-}
+}*/

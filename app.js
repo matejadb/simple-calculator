@@ -43,34 +43,5 @@ const operators = document.querySelectorAll(".operators");
 
 // FUNCTIONALITY
 numbers.forEach((number) => {
-	number.addEventListener("click", (e) => {
-		output.innerText = e.target.innerHTML;
-		if (operator === undefined) {
-			first_number = e.target.innerHTML;
-			output.innerText = e.target.innerHTML;
-			console.log(first_number);
-		} else if (operator !== undefined) {
-			second_number = e.target.innerHTML;
-			output.innerText = e.target.innerHTML;
-			console.log(second_number);
-		}
-	});
-});
-
-operators.forEach((operator) => {
-	operator.addEventListener("click", (e) => {
-		output.innerText = e.target.innerHTML;
-		if (e.target.innerHTML === "CLR") {
-			output.innerText = "";
-		}
-		if (first_number !== undefined) {
-			operator = e.target.innerHTML;
-			output.innerText = e.target.innerHTML;
-			console.log(operator);
-		}
-
-		if (operator === "=") {
-			console.log(first_number, second_number, operator);
-		}
-	});
+	number.addEventListener("click", (e) => {});
 });
