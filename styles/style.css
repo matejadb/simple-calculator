@@ -68,8 +68,7 @@ body {
 	padding: 0.3em;
 }
 
-.number:hover,
-.operator:hover {
+.number:hover {
 	background-color: #b6b6b6;
 	cursor: pointer;
 }
