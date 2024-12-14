@@ -26,19 +26,19 @@ body {
 }
 
 .container,
-.numbers {
+.buttons {
 	background-color: rgb(45, 44, 44);
 }
 
 .container,
-.number {
+.button {
 	font-size: 40px;
 	border-radius: 1.5em;
 	font-family: "Zen Dots", sans-serif;
 }
 
-/* RESULT SECTION */
-.result {
+/* REDISPLAY SECTION */
+.display {
 	display: flex;
 	justify-content: end;
 	align-items: center;
@@ -62,31 +62,34 @@ body {
 	background-color: #ffffff;
 }
 
-.numbers {
+.buttons {
 	display: flex;
 	height: 100%;
 	padding: 0.3em;
 }
 
-.number:hover {
+.button:hover {
 	background-color: #b6b6b6;
 	cursor: pointer;
 }
 
 /* NUMBERS */
-.numbers {
+.buttons {
 	flex-direction: row;
 	flex-wrap: wrap;
 	width: 100%;
 }
-.numbers:nth-child(n) {
+.buttons:nth-child(n) {
 	justify-content: end;
 }
 
-.number {
+.button {
 	width: 25%;
 }
 
+.is-pressed {
+	background-color: #b6b6b6;
+}
 /*OPERATORS 
 .operators {
 	flex-direction: column;

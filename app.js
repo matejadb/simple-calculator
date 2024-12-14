@@ -12,7 +12,11 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-	return a / b;
+	if (b === 0) {
+		display.textContent = "ERROR";
+	}
+	let result = a / b;
+	display.textContent = result;
 }
 
 function operate(first_number, second_number, operator) {
@@ -30,58 +34,81 @@ function operate(first_number, second_number, operator) {
 	}
 }
 
-function getFirstNumber() {
-	number.forEach((number) => {
-		number.addEventListener("click", (e) => {
-			first_number = parseInt(e.target.innerText);
-			output.innerText = first_number;
-			console.log("First number: " + first_number);
-		});
-	});
-}
-
-function getSecondNumber() {
-	number.forEach((number) => {
-		number.addEventListener("click", (e) => {
-			second_number = parseInt(e.target.innerText);
-			output.innerText = second_number;
-			console.log("Second number: " + second_number);
-		});
-	});
-}
-
-function getOperator() {
-	operators.forEach((operator) => {
-		operator.addEventListener("click", (e) => {
-			operator = e.target.innerText;
-			output.innerText = operator;
-			console.log("Operator: " + operator);
-			operatorClicked = true;
-		});
-	});
-}
-
-function calculator() {
-	first_number = getFirstNumber();
-	getOperator();
-	if (operatorClicked) {
-		getSecondNumber();
-	}
-}
 // VARIABLES
-let first_number = undefined;
-let second_number = undefined;
-let operator = undefined;
-let operatorClicked = false;
+let number_count = 0;
+let first_number;
+let second_number;
 let result = 0;
-let end = -1;
-
+let operator;
 // SELECTIONS
-const container = document.querySelector(".container");
-const output = document.querySelector(".output");
-const number = document.querySelectorAll(".number");
-const operators = document.querySelectorAll(".operator");
+const calculator = document.querySelector(".container");
+const keys = calculator.querySelector(".buttons");
+const display = document.querySelector(".display");
 
 // FUNCTIONALITY
-calculator();
-//getOperator();
+keys.addEventListener("click", (e) => {
+	if (e.target.matches("button")) {
+		const key = e.target;
+		const action = key.dataset.action;
+		const keyContent = key.textContent;
+		const displayedNum = display.textContent;
+
+		if (!action) {
+			if (displayedNum === "0") {
+				display.textContent = keyContent;
+			} else {
+				display.textContent = displayedNum + keyContent;
+			}
+		}
+		if (
+			action === "add" ||
+			action === "subtract" ||
+			action === "multiply" ||
+			action === "divide"
+		) {
+			first_number = parseFloat(display.textContent);
+			switch (action) {
+				case "add":
+					operator = "+";
+					break;
+				case "subtract":
+					operator = "-";
+					break;
+				case "multiply":
+					operator = "*";
+					break;
+				case "divide":
+					operator = "/";
+					break;
+			}
+			display.textContent = "";
+		}
+
+		if (action === "equal") {
+			second_number = parseFloat(display.textContent);
+			switch (operator) {
+				case "+":
+					display.textContent = operate(first_number, second_number, operator);
+					break;
+				case "-":
+					console.log(operate(first_number, second_number, operator));
+					break;
+				case "*":
+					console.log(operate(first_number, second_number, operator));
+					break;
+				case "/":
+					operate(first_number, second_number, operator);
+					break;
+			}
+			display.textContent = result;
+		}
+		if (action === "decimal") {
+			display.textContent = displayedNum + keyContent;
+		}
+		if (action === "clear") {
+			result = 0;
+			display.textContent = 0;
+			currentNumber = 0;
+		}
+	}
+});
