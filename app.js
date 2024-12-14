@@ -13,10 +13,9 @@ function multiply(a, b) {
 
 function divide(a, b) {
 	if (b === 0) {
-		display.textContent = "ERROR";
+		return "ERROR";
 	}
-	let result = a / b;
-	display.textContent = result;
+	return a / b;
 }
 
 function operate(first_number, second_number, operator) {
@@ -29,17 +28,14 @@ function operate(first_number, second_number, operator) {
 			return multiply(first_number, second_number);
 		case "/":
 			return divide(first_number, second_number);
-		default:
-			console.log("Invalid operator!");
 	}
 }
 
 // VARIABLES
-let number_count = 0;
 let first_number;
 let second_number;
-let result = 0;
 let operator;
+
 // SELECTIONS
 const calculator = document.querySelector(".container");
 const keys = calculator.querySelector(".buttons");
@@ -86,21 +82,7 @@ keys.addEventListener("click", (e) => {
 
 		if (action === "equal") {
 			second_number = parseFloat(display.textContent);
-			switch (operator) {
-				case "+":
-					display.textContent = operate(first_number, second_number, operator);
-					break;
-				case "-":
-					console.log(operate(first_number, second_number, operator));
-					break;
-				case "*":
-					console.log(operate(first_number, second_number, operator));
-					break;
-				case "/":
-					operate(first_number, second_number, operator);
-					break;
-			}
-			display.textContent = result;
+			display.textContent = operate(first_number, second_number, operator);
 		}
 		if (action === "decimal") {
 			display.textContent = displayedNum + keyContent;
