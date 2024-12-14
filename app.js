@@ -36,6 +36,7 @@ let second_number = undefined;
 let operator = undefined;
 let result = 0;
 let end = -1;
+
 // SELECTIONS
 const container = document.querySelector(".container");
 const output = document.querySelector(".output");
