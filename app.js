@@ -35,15 +35,21 @@ let first_number;
 let second_number;
 let operator;
 
-console.log(operate(1, 1, "+"));
-console.log(operate(3, 1, "-"));
-console.log(operate(2, 2, "*"));
-console.log(operate(4, 2, "/"));
+// SELECTIONS
+const container = document.querySelector(".container");
+const output = document.querySelector(".output");
+const numbers = document.querySelectorAll(".numbers");
+const operators = document.querySelectorAll(".operators");
 
-/*buttons.forEach((button) => {
-	button.addEventListener("click", (event) => {
-		let num = event.target.innerHTML;
-		result.appendChild(num);
-		container.appendChild(result);
+// FUNCTIONALITY
+numbers.forEach((number) => {
+	number.addEventListener("click", (e) => {
+		output.innerText = e.target.innerHTML;
 	});
-});*/
+});
+
+operators.forEach((operator) => {
+	operator.addEventListener("click", (e) => {
+		output.innerText = e.target.innerHTML;
+	});
+});
