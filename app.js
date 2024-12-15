@@ -36,6 +36,8 @@ let first_number;
 let second_number;
 let operator;
 let result = 0;
+let calc_start = false;
+let pressed_operator;
 // SELECTIONS
 const calculator = document.querySelector(".container");
 const keys = calculator.querySelector(".buttons");
@@ -50,12 +52,20 @@ keys.addEventListener("click", (e) => {
 		const displayedNum = display.textContent;
 
 		if (!action) {
-			if (displayedNum === "0") {
+			if (calc_start) {
 				display.textContent = keyContent;
+				console.log;
+				pressed_operator.classList.remove("is-pressed");
+				calc_start = false;
 			} else {
-				display.textContent = displayedNum + keyContent;
+				if (displayedNum === "0") {
+					display.textContent = keyContent;
+				} else {
+					display.textContent = displayedNum + keyContent;
+				}
 			}
 		}
+
 		if (
 			action === "add" ||
 			action === "subtract" ||
@@ -65,6 +75,8 @@ keys.addEventListener("click", (e) => {
 			first_number = parseFloat(display.textContent);
 			console.log("first_number: " + first_number);
 			calc_start = true;
+			pressed_operator = key;
+			pressed_operator.classList.add("is-pressed");
 			switch (action) {
 				case "add":
 					operator = "+";
@@ -83,6 +95,7 @@ keys.addEventListener("click", (e) => {
 
 		if (action === "equal") {
 			second_number = parseFloat(display.textContent);
+			console.log("second_number " + second_number);
 			display.textContent = operate(first_number, second_number, operator);
 		}
 		if (action === "decimal") {
