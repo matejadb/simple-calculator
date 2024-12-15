@@ -35,7 +35,7 @@ function operate(first_number, second_number, operator) {
 let first_number;
 let second_number;
 let operator;
-
+let result = 0;
 // SELECTIONS
 const calculator = document.querySelector(".container");
 const keys = calculator.querySelector(".buttons");
@@ -63,6 +63,8 @@ keys.addEventListener("click", (e) => {
 			action === "divide"
 		) {
 			first_number = parseFloat(display.textContent);
+			console.log("first_number: " + first_number);
+			calc_start = true;
 			switch (action) {
 				case "add":
 					operator = "+";
@@ -77,7 +79,6 @@ keys.addEventListener("click", (e) => {
 					operator = "/";
 					break;
 			}
-			display.textContent = "";
 		}
 
 		if (action === "equal") {
