@@ -38,6 +38,7 @@ let operator;
 let result = 0;
 let calc_start = false;
 let pressed_operator;
+
 // SELECTIONS
 const calculator = document.querySelector(".container");
 const keys = calculator.querySelector(".buttons");
@@ -53,16 +54,20 @@ keys.addEventListener("click", (e) => {
 
 		if (!action) {
 			if (calc_start) {
-				display.textContent = keyContent;
-				console.log;
+				if (displayedNum !== "") {
+					display.textContent = keyContent;
+				} else {
+					display.textContent = displayedNum + keyContent;
+				}
 				pressed_operator.classList.remove("is-pressed");
-				calc_start = false;
 			} else {
 				if (displayedNum === "0") {
 					display.textContent = keyContent;
 				} else {
 					display.textContent = displayedNum + keyContent;
 				}
+				current_number = parseFloat(display.textContent);
+				console.log("Current number: " + current_number);
 			}
 		}
 
@@ -72,16 +77,12 @@ keys.addEventListener("click", (e) => {
 			action === "multiply" ||
 			action === "divide"
 		) {
-			current_number = parseFloat(display.textContent);
-			console.log("current_number: " + current_number);
 			calc_start = true;
 			pressed_operator = key;
 			pressed_operator.classList.add("is-pressed");
 			switch (action) {
 				case "add":
 					operator = "+";
-					result = operate(current_number, result, operator);
-					display.textContent = result;
 					break;
 				case "subtract":
 					operator = "-";
@@ -91,8 +92,6 @@ keys.addEventListener("click", (e) => {
 					if (result === 0) {
 						result = 1;
 					}
-					result = operate(current_number, result, operator);
-					display.textContent = result;
 					break;
 				case "divide":
 					operator = "/";
@@ -102,8 +101,8 @@ keys.addEventListener("click", (e) => {
 
 		if (action === "equal") {
 			last_number = parseFloat(display.textContent);
-			console.log("last_number " + last_number);
-			display.textContent = operate(result, last_number, operator);
+			console.log("result " + result);
+			display.textContent = result;
 		}
 		if (action === "decimal") {
 			display.textContent = displayedNum + keyContent;
