@@ -32,8 +32,8 @@ function operate(first_number, second_number, operator) {
 }
 
 // VARIABLES
-let first_number;
-let second_number;
+let current_number;
+let last_number;
 let operator;
 let result = 0;
 let calc_start = false;
@@ -72,20 +72,27 @@ keys.addEventListener("click", (e) => {
 			action === "multiply" ||
 			action === "divide"
 		) {
-			first_number = parseFloat(display.textContent);
-			console.log("first_number: " + first_number);
+			current_number = parseFloat(display.textContent);
+			console.log("current_number: " + current_number);
 			calc_start = true;
 			pressed_operator = key;
 			pressed_operator.classList.add("is-pressed");
 			switch (action) {
 				case "add":
 					operator = "+";
+					result = operate(current_number, result, operator);
+					display.textContent = result;
 					break;
 				case "subtract":
 					operator = "-";
 					break;
 				case "multiply":
 					operator = "*";
+					if (result === 0) {
+						result = 1;
+					}
+					result = operate(current_number, result, operator);
+					display.textContent = result;
 					break;
 				case "divide":
 					operator = "/";
@@ -94,9 +101,9 @@ keys.addEventListener("click", (e) => {
 		}
 
 		if (action === "equal") {
-			second_number = parseFloat(display.textContent);
-			console.log("second_number " + second_number);
-			display.textContent = operate(first_number, second_number, operator);
+			last_number = parseFloat(display.textContent);
+			console.log("last_number " + last_number);
+			display.textContent = operate(result, last_number, operator);
 		}
 		if (action === "decimal") {
 			display.textContent = displayedNum + keyContent;
