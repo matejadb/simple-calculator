@@ -15,7 +15,7 @@ function divide(a, b) {
 	if (b === 0) {
 		return "ERROR";
 	}
-	return a / b;
+	return Math.round((a / b) * 100) / 100;
 }
 
 function operate(first_number, second_number, operator) {
@@ -57,7 +57,6 @@ keys.addEventListener("click", (e) => {
 			if (calc_start) {
 				display.textContent = keyContent;
 				current_number = parseFloat(display.textContent);
-				console.log("Current number: " + current_number);
 				pressed_operator.classList.remove("is-pressed");
 				calc_start = false;
 			} else {
@@ -67,7 +66,6 @@ keys.addEventListener("click", (e) => {
 					display.textContent = displayedNum + keyContent;
 				}
 				current_number = parseFloat(display.textContent);
-				console.log("Current number: " + current_number);
 			}
 		}
 
@@ -82,10 +80,11 @@ keys.addEventListener("click", (e) => {
 			pressed_operator.classList.add("is-pressed");
 
 			if (operator) {
-				console.log("last number: " + last_number);
+				console.log("I'm here");
 				result = operate(last_number, current_number, operator);
 				display.textContent = result;
 			} else {
+				console.log("No im here");
 				result = current_number;
 			}
 			last_number = result;
@@ -116,9 +115,11 @@ keys.addEventListener("click", (e) => {
 			}
 		}
 		if (action === "clear") {
-			result = 0;
-			display.textContent = 0;
+			display.textContent = "0";
+			operator = "";
 			currentNumber = 0;
+			last_number = 0;
+			result = 0;
 		}
 	}
 });
