@@ -32,10 +32,11 @@ function operate(first_number, second_number, operator) {
 }
 
 // VARIABLES
-let current_number;
-let last_number;
-let operator;
+let current_number = 0;
+let last_number = 0;
+let operator = "";
 let result = 0;
+
 let calc_start = false;
 let pressed_operator;
 
@@ -54,12 +55,11 @@ keys.addEventListener("click", (e) => {
 
 		if (!action) {
 			if (calc_start) {
-				if (displayedNum !== "") {
-					display.textContent = keyContent;
-				} else {
-					display.textContent = displayedNum + keyContent;
-				}
+				display.textContent = keyContent;
+				current_number = parseFloat(display.textContent);
+				console.log("Current number: " + current_number);
 				pressed_operator.classList.remove("is-pressed");
+				calc_start = false;
 			} else {
 				if (displayedNum === "0") {
 					display.textContent = keyContent;
@@ -80,6 +80,16 @@ keys.addEventListener("click", (e) => {
 			calc_start = true;
 			pressed_operator = key;
 			pressed_operator.classList.add("is-pressed");
+
+			if (operator) {
+				console.log("last number: " + last_number);
+				result = operate(last_number, current_number, operator);
+				display.textContent = result;
+			} else {
+				result = current_number;
+			}
+			last_number = result;
+			console.log("last number: " + last_number);
 			switch (action) {
 				case "add":
 					operator = "+";
@@ -89,9 +99,6 @@ keys.addEventListener("click", (e) => {
 					break;
 				case "multiply":
 					operator = "*";
-					if (result === 0) {
-						result = 1;
-					}
 					break;
 				case "divide":
 					operator = "/";
@@ -100,12 +107,13 @@ keys.addEventListener("click", (e) => {
 		}
 
 		if (action === "equal") {
-			last_number = parseFloat(display.textContent);
-			console.log("result " + result);
+			result = operate(last_number, current_number, operator);
 			display.textContent = result;
 		}
 		if (action === "decimal") {
-			display.textContent = displayedNum + keyContent;
+			if (!display.textContent.includes(".")) {
+				display.textContent = displayedNum + keyContent;
+			}
 		}
 		if (action === "clear") {
 			result = 0;
