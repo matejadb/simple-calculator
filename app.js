@@ -123,3 +123,10 @@ keys.addEventListener("click", (e) => {
 		}
 	}
 });
+
+/*
+TODO:
+- KEYBOARD SUPPORT
+- BACKSPACE BUTTON
+- NEGATIVE NUMBERS SUPPORT
+*/
