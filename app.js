@@ -65,6 +65,7 @@ keys.addEventListener("click", (e) => {
 				} else {
 					display.textContent = displayedNum + keyContent;
 				}
+
 				current_number = parseFloat(display.textContent);
 			}
 		}
@@ -80,11 +81,9 @@ keys.addEventListener("click", (e) => {
 			pressed_operator.classList.add("is-pressed");
 
 			if (operator) {
-				console.log("I'm here");
 				result = operate(last_number, current_number, operator);
 				display.textContent = result;
 			} else {
-				console.log("No im here");
 				result = current_number;
 			}
 			last_number = result;
@@ -104,7 +103,16 @@ keys.addEventListener("click", (e) => {
 					break;
 			}
 		}
-
+		if (action === "minus") {
+			if (!display.textContent.includes("-")) {
+				display.textContent = "-" + displayedNum;
+				console.log("minus");
+			} else {
+				let temp = display.textContent.split("-");
+				display.textContent = temp[1];
+			}
+			current_number = parseFloat(display.textContent);
+		}
 		if (action === "equal") {
 			result = operate(last_number, current_number, operator);
 			display.textContent = result;
