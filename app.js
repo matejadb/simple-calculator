@@ -79,7 +79,7 @@ keys.addEventListener("click", (e) => {
 			calc_start = true;
 			pressed_operator = key;
 			pressed_operator.classList.add("is-pressed");
-
+			console.log(current_number);
 			if (operator) {
 				result = operate(last_number, current_number, operator);
 				display.textContent = result;
@@ -114,6 +114,7 @@ keys.addEventListener("click", (e) => {
 				}
 			}
 			current_number = parseFloat(display.textContent);
+			console.log("curr: " + current_number);
 		}
 		if (action === "equal") {
 			if (!display.textContent) {
@@ -122,6 +123,7 @@ keys.addEventListener("click", (e) => {
 				console.log(last_number);
 			}
 			result = operate(last_number, current_number, operator);
+			//last_number = 0;
 			display.textContent = result;
 		}
 		if (action === "erase") {
@@ -206,7 +208,6 @@ document.addEventListener("keydown", (e) => {
 		} else {
 			display.textContent = "0";
 		}
-
 		current_number = parseFloat(display.textContent);
 	}
 
@@ -227,6 +228,8 @@ document.addEventListener("keydown", (e) => {
 			display.textContent = temp[1];
 		}
 		current_number = parseFloat(display.textContent);
+		console.log("last: " + last_number);
+		console.log("curr: " + current_number);
 	}
 });
 /*
