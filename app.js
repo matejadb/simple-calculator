@@ -131,7 +131,6 @@ keys.addEventListener("click", (e) => {
 		if (action === "erase") {
 			display.textContent = display.textContent.slice(0, -1);
 			current_number = parseFloat(display.textContent);
-			console.log(display.textContent);
 		}
 		if (action === "decimal") {
 			if (!display.textContent.includes(".")) {
