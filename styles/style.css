@@ -9,7 +9,18 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 	height: 100vh;
+}
+
+/* INFO SECTION */
+.info {
+	font-size: 2em;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.info h1 {
+	text-align: center;
 }
 
 /* CONTAINER SECTION */

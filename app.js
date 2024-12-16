@@ -209,8 +209,8 @@ document.addEventListener("keydown", (e) => {
 	if (e.key == "Backspace") {
 		if (displayedNum !== "0") {
 			display.textContent = display.textContent.slice(0, -1);
-			current_number = parseFloat(display.textContent);
 		}
+		current_number = parseFloat(display.textContent);
 	}
 
 	if (e.key.toLowerCase() === "c") {
@@ -220,6 +220,16 @@ document.addEventListener("keydown", (e) => {
 		operator = "";
 		calc_start = false;
 		display.textContent = "0";
+	}
+
+	if (e.key.toLowerCase() === "n") {
+		if (!display.textContent.includes("-")) {
+			display.textContent = "-" + displayedNum;
+		} else {
+			let temp = display.textContent.split("-");
+			display.textContent = temp[1];
+		}
+		current_number = parseFloat(display.textContent);
 	}
 });
 /*
