@@ -177,7 +177,6 @@ document.addEventListener("keydown", (e) => {
 	if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/") {
 		if (!display.textContent) {
 			current_number = 0;
-			console.log(current_number);
 		}
 		calc_start = true;
 		if (operator) {
@@ -199,7 +198,6 @@ document.addEventListener("keydown", (e) => {
 
 	if (e.key === "=" || e.key === "Enter") {
 		if (!display.textContent) {
-			current_number = 0;
 			console.log(current_number);
 		}
 		result = operate(last_number, current_number, operator);
