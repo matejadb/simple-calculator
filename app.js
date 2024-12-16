@@ -76,10 +76,6 @@ keys.addEventListener("click", (e) => {
 			action === "multiply" ||
 			action === "divide"
 		) {
-			if (!display.textContent) {
-				current_number = 0;
-				console.log(current_number);
-			}
 			calc_start = true;
 			pressed_operator = key;
 			pressed_operator.classList.add("is-pressed");
@@ -129,7 +125,11 @@ keys.addEventListener("click", (e) => {
 			display.textContent = result;
 		}
 		if (action === "erase") {
-			display.textContent = display.textContent.slice(0, -1);
+			if (display.textContent !== "0" && display.textContent.length > 1) {
+				display.textContent = display.textContent.slice(0, -1);
+			} else {
+				display.textContent = "0";
+			}
 			current_number = parseFloat(display.textContent);
 		}
 		if (action === "decimal") {
@@ -175,9 +175,6 @@ document.addEventListener("keydown", (e) => {
 	}
 
 	if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/") {
-		if (!display.textContent) {
-			current_number = 0;
-		}
 		calc_start = true;
 		if (operator) {
 			result = operate(last_number, current_number, operator);
@@ -187,7 +184,6 @@ document.addEventListener("keydown", (e) => {
 		}
 		last_number = result;
 		operator = e.key;
-		console.log(result);
 	}
 
 	if (e.key === ".") {
@@ -205,9 +201,12 @@ document.addEventListener("keydown", (e) => {
 	}
 
 	if (e.key == "Backspace") {
-		if (displayedNum !== "0") {
+		if (displayedNum !== "0" && display.textContent.length > 1) {
 			display.textContent = display.textContent.slice(0, -1);
+		} else {
+			display.textContent = "0";
 		}
+
 		current_number = parseFloat(display.textContent);
 	}
 
