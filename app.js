@@ -119,6 +119,11 @@ keys.addEventListener("click", (e) => {
 			result = operate(last_number, current_number, operator);
 			display.textContent = result;
 		}
+		if (action === "erase") {
+			display.textContent = display.textContent.slice(0, -1);
+			current_number = parseFloat(display.textContent);
+			console.log(display.textContent);
+		}
 		if (action === "decimal") {
 			if (!display.textContent.includes(".")) {
 				display.textContent = displayedNum + keyContent;
