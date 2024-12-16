@@ -123,6 +123,7 @@ keys.addEventListener("click", (e) => {
 			if (!display.textContent) {
 				current_number = 0;
 				console.log(current_number);
+				console.log(last_number);
 			}
 			result = operate(last_number, current_number, operator);
 			display.textContent = result;
@@ -150,5 +151,4 @@ keys.addEventListener("click", (e) => {
 /*
 TODO:
 - KEYBOARD SUPPORT
-- BACKSPACE BUTTON
 */
