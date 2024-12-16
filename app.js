@@ -149,6 +149,7 @@ keys.addEventListener("click", (e) => {
 });
 
 document.addEventListener("keydown", (e) => {
+	const displayedNum = display.textContent;
 	if (
 		e.key === "1" ||
 		e.key === "2" ||
@@ -161,12 +162,65 @@ document.addEventListener("keydown", (e) => {
 		e.key === "9" ||
 		e.key == "0"
 	) {
-		const displayedNum = display.textContent;
-		if (displayedNum === "0") {
+		if (calc_start) {
 			display.textContent = e.key;
+			calc_start = false;
 		} else {
-			display.textContent = displayedNum + e.key;
+			if (displayedNum === "0") {
+				display.textContent = e.key;
+			} else {
+				display.textContent = displayedNum + e.key;
+			}
 		}
+		current_number = parseFloat(display.textContent);
+	}
+
+	if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/") {
+		if (!display.textContent) {
+			current_number = 0;
+			console.log(current_number);
+		}
+		calc_start = true;
+		if (operator) {
+			result = operate(last_number, current_number, operator);
+			display.textContent = result;
+		} else {
+			result = current_number;
+		}
+		last_number = result;
+		operator = e.key;
+		console.log(result);
+	}
+
+	if (e.key === ".") {
+		if (!display.textContent.includes(".")) {
+			display.textContent = displayedNum + ".";
+		}
+	}
+
+	if (e.key === "=" || e.key === "Enter") {
+		if (!display.textContent) {
+			current_number = 0;
+			console.log(current_number);
+		}
+		result = operate(last_number, current_number, operator);
+		display.textContent = result;
+	}
+
+	if (e.key == "Backspace") {
+		if (displayedNum !== "0") {
+			display.textContent = display.textContent.slice(0, -1);
+			current_number = parseFloat(display.textContent);
+		}
+	}
+
+	if (e.key.toLowerCase() === "c") {
+		result = 0;
+		current_number = 0;
+		last_number = 0;
+		operator = "";
+		calc_start = false;
+		display.textContent = "0";
 	}
 });
 /*
