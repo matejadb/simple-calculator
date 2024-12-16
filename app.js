@@ -120,6 +120,10 @@ keys.addEventListener("click", (e) => {
 			current_number = parseFloat(display.textContent);
 		}
 		if (action === "equal") {
+			if (!display.textContent) {
+				current_number = 0;
+				console.log(current_number);
+			}
 			result = operate(last_number, current_number, operator);
 			display.textContent = result;
 		}
