@@ -104,12 +104,14 @@ keys.addEventListener("click", (e) => {
 			}
 		}
 		if (action === "minus") {
-			if (!display.textContent.includes("-")) {
-				display.textContent = "-" + displayedNum;
-				console.log("minus");
-			} else {
-				let temp = display.textContent.split("-");
-				display.textContent = temp[1];
+			if (display.textContent !== "0") {
+				if (!display.textContent.includes("-")) {
+					display.textContent = "-" + displayedNum;
+					console.log("minus");
+				} else {
+					let temp = display.textContent.split("-");
+					display.textContent = temp[1];
+				}
 			}
 			current_number = parseFloat(display.textContent);
 		}
