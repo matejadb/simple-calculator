@@ -76,6 +76,10 @@ keys.addEventListener("click", (e) => {
 			action === "multiply" ||
 			action === "divide"
 		) {
+			if (!display.textContent) {
+				current_number = 0;
+				console.log(current_number);
+			}
 			calc_start = true;
 			pressed_operator = key;
 			pressed_operator.classList.add("is-pressed");
