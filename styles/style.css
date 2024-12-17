@@ -10,7 +10,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	margin: auto;
+	height: 100vh;
 }
 
 /* INFO SECTION */
@@ -30,10 +30,10 @@ body {
 	display: flex;
 	flex-direction: column;
 	width: 600px;
+	height: 1000px;
 	border-radius: 1.5em;
 	margin: auto;
 	padding: 0.8em;
-	margin: auto;
 }
 
 .container,
