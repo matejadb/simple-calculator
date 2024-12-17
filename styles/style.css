@@ -10,7 +10,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	height: 100vh;
+	margin: auto;
 }
 
 /* INFO SECTION */
@@ -30,10 +30,10 @@ body {
 	display: flex;
 	flex-direction: column;
 	width: 600px;
-	height: 1000px;
 	border-radius: 1.5em;
 	margin: auto;
 	padding: 0.8em;
+	margin: auto;
 }
 
 .container,
@@ -101,12 +101,3 @@ body {
 .is-pressed {
 	background-color: #b6b6b6;
 }
-/*OPERATORS 
-.operators {
-	flex-direction: column;
-	width: 25%;
-}
-
-.operator {
-	height: 33.33%;
-}*/
