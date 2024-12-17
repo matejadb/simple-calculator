@@ -52,7 +52,7 @@ keys.addEventListener("click", (e) => {
 		const action = key.dataset.action;
 		const keyContent = key.textContent;
 		const displayedNum = display.textContent;
-
+		equaled = false;
 		if (!action) {
 			if (calc_start) {
 				display.textContent = keyContent;
@@ -77,9 +77,9 @@ keys.addEventListener("click", (e) => {
 			action === "divide"
 		) {
 			calc_start = true;
+			equaled = false;
 			pressed_operator = key;
 			pressed_operator.classList.add("is-pressed");
-			console.log(current_number);
 			if (operator) {
 				result = operate(last_number, current_number, operator);
 				display.textContent = result;
@@ -87,7 +87,6 @@ keys.addEventListener("click", (e) => {
 				result = current_number;
 			}
 			last_number = result;
-			console.log("last number: " + last_number);
 			switch (action) {
 				case "add":
 					operator = "+";
@@ -104,26 +103,23 @@ keys.addEventListener("click", (e) => {
 			}
 		}
 		if (action === "minus") {
-			if (display.textContent !== "0") {
-				if (!display.textContent.includes("-")) {
-					display.textContent = "-" + displayedNum;
-					console.log("minus");
-				} else {
-					let temp = display.textContent.split("-");
-					display.textContent = temp[1];
+			if (!equaled) {
+				if (display.textContent !== "0") {
+					if (!display.textContent.includes("-")) {
+						display.textContent = "-" + displayedNum;
+					} else {
+						let temp = display.textContent.split("-");
+						display.textContent = temp[1];
+					}
 				}
 			}
 			current_number = parseFloat(display.textContent);
-			console.log("curr: " + current_number);
 		}
 		if (action === "equal") {
-			if (!display.textContent) {
-				current_number = 0;
-				console.log(current_number);
-				console.log(last_number);
-			}
 			result = operate(last_number, current_number, operator);
 			display.textContent = result;
+			current_number = result;
+			operator = "";
 		}
 		if (action === "erase") {
 			if (display.textContent !== "0" && display.textContent.length > 1) {
@@ -194,11 +190,10 @@ document.addEventListener("keydown", (e) => {
 	}
 
 	if (e.key === "=" || e.key === "Enter") {
-		if (!display.textContent) {
-			console.log(current_number);
-		}
 		result = operate(last_number, current_number, operator);
 		display.textContent = result;
+		current_number = result;
+		operator = "";
 	}
 
 	if (e.key == "Backspace") {
@@ -227,8 +222,6 @@ document.addEventListener("keydown", (e) => {
 			display.textContent = temp[1];
 		}
 		current_number = parseFloat(display.textContent);
-		console.log("last: " + last_number);
-		console.log("curr: " + current_number);
 	}
 });
 /*
