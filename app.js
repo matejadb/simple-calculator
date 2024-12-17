@@ -123,7 +123,6 @@ keys.addEventListener("click", (e) => {
 				console.log(last_number);
 			}
 			result = operate(last_number, current_number, operator);
-			//last_number = 0;
 			display.textContent = result;
 		}
 		if (action === "erase") {
