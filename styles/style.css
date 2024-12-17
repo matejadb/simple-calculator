@@ -9,14 +9,17 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	flex-direction: column;
+	flex-direction: row;
 	height: 100vh;
 }
 
 /* INFO SECTION */
 .info {
+	margin: auto;
 	font-size: 2em;
+	width: 500px;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	text-align: center;
 }
 
 .info h1 {
@@ -29,8 +32,8 @@ body {
 	color: #ffffff;
 	display: flex;
 	flex-direction: column;
-	width: 600px;
-	height: 1000px;
+	width: 450px;
+	height: 800px;
 	border-radius: 1.5em;
 	margin: auto;
 	padding: 0.8em;
@@ -54,7 +57,7 @@ body {
 	justify-content: end;
 	align-items: center;
 	width: 100%;
-	height: 200px;
+	height: 150px;
 	background-color: #b6b6b6;
 	border-radius: 1.5em;
 	color: black;
@@ -68,7 +71,7 @@ body {
 .button-container {
 	display: flex;
 	width: 100%;
-	height: 800px;
+	height: 500px;
 	margin-top: 1.5em;
 	background-color: #ffffff;
 }
@@ -100,4 +103,9 @@ body {
 
 .is-pressed {
 	background-color: #b6b6b6;
+}
+
+/* MEDIA */
+
+@media only screen and (max-width: 1920px) {
 }
